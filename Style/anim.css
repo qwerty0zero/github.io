@@ -1,6 +1,6 @@
 .anim{
     opacity: 0;
-    transition: 0.6s;
+    transition: 0.8s;
     position: relative;
 }
 input.anim, textarea.anim{

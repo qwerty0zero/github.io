@@ -5,7 +5,6 @@ let text = "";
 const timer = ms => new Promise(res => setTimeout(res, ms));
 
 async function load (element) {
-console.log(element);
 let el_text = element.textContent;
 element.textContent = "";
 for (let i = 0; i < el_text.length; i++) {

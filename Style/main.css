@@ -30,6 +30,9 @@ time, mark, audio, video {
     background:transparent;
     font-family: 'Montserrat', sans-serif;    font-size: 12px;
 }
+section, main,head,body{
+    transition: 0.8s;
+}
 button{
     border: none;
     text-decoration: none;

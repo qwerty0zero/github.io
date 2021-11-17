@@ -46,9 +46,28 @@ for (let anchor of anchors) {
   })
 }
 
+
+// let scrollWidth = window.offsetWith - window.clientWidth;
+// console.log(scrollWidth)
+
+let div = document.createElement('div');
+
+div.style.overflowY = 'scroll';
+div.style.width = '50px';
+div.style.height = '50px';
+
+// мы должны вставить элемент в документ, иначе размеры будут равны 0
+document.body.append(div);
+let scrollWidth = div.offsetWidth - div.clientWidth;
+
+div.remove();
+
+console.log(scrollWidth);
+
 let button = document.querySelector(".buttons_block");
 let nav = document.querySelector("nav");
 let menu_active = true;
+let shadow = document.getElementById("shadow");
 
 let selectedTd;
 nav.onclick = function(event) {
@@ -73,15 +92,22 @@ function openMenu(){
   button.classList.add("active");
   nav.classList.add("active");
   header.classList.add("active");
-  // document.body.style.overflow = "hidden";
+  shadow.classList.add("active");
   menu_active = !menu_active;
+  document.documentElement.style.overflowY = "hidden";
+  document.documentElement.style.paddingRight = scrollWidth + "px";
+  shadow.classList.add("active");
+
 }
 
 function closeMenu(){
   button.classList.remove("active");
   nav.classList.remove("active");
   header.classList.remove("active");
+  shadow.classList.remove("active");
   menu_active = !menu_active;
+  document.documentElement.style.overflowY = "unset";
+  document.documentElement.style.paddingRight = "0px";
 
 }
 
@@ -95,3 +121,9 @@ window.addEventListener("keyup", function(e){ if(e.keyCode == 27){
 
   closeMenu();
 }  }, false);
+
+window.onclick = function (e){
+  let header = e.target.closest("header");
+  if (!header) closeMenu();
+}
+
